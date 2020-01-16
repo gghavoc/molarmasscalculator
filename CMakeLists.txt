@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(untitled)
+project(MolarMassCalculator)
 
 set(CMAKE_CXX_STANDARD 20)
 
@@ -24,7 +24,7 @@ set(MolarMassCalculator
         sources/Element.cpp
         sources/MolarMass.h
         sources/MolarMass.cpp
-        )
+        sources/EventHandler.cpp sources/EventHandler.h)
 add_executable(MolarMassCalculator ${MolarMassCalculator})
 
 target_link_libraries(MolarMassCalculator ${wxWidgets_LIBRARIES})

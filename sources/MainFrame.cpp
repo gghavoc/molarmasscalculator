@@ -7,12 +7,14 @@
 #include "ElementListBox.h"
 #include "MolarMass.h"
 
+// STATIC BINDING
 wxBEGIN_EVENT_TABLE(MainFrame,wxFrame)
                 EVT_MOUSE_EVENTS(MainFrame::OnClick)
                 EVT_MENU(wxID_EXIT, MainFrame::OnExit)
                 EVT_MENU(wxID_ABOUT, MainFrame::OnAbout)
                 EVT_BUTTON(CUSTOM_ID::BtnCalculate, MainFrame::OnButtonCalculate)
                 EVT_SIZE(MainFrame::OnSize)
+                EVT_TEXT_ENTER(CUSTOM_ID::TxtInputArea, MainFrame::OnButtonCalculate)
 wxEND_EVENT_TABLE();
 
 MainFrame::MainFrame(const wxString& title)
@@ -104,6 +106,9 @@ MainFrame::MainFrame(const wxString& title)
     // Sets icon of window
     this->SetIcon(wxIcon());
 
+    // DYNAMIC BINDING
+    //this->Bind(wxEVT_TEXT_ENTER, &MainFrame::OnButtonCalculate, this, CUSTOM_ID::TxtInputArea);
+
     return;
 }
 
@@ -138,13 +143,15 @@ void MainFrame::OnButtonCalculate(wxCommandEvent &event)
 
     double totalMass = 0;
 
-    for (const std::pair<const std::string, int>& PairRef : elementMap)
+    for (const std::pair<const std::string, int >& PairRef : elementMap)
     {
         if (IsValidElement(PairRef.first))
         {
             Element RetrievedElement = GetElementDataFromMap(PairRef.first);
+
             double ElementTotalMass = RetrievedElement.AtomicMass * (double)PairRef.second;
-            *elementListBox
+
+            (*elementListBox)
                     << RetrievedElement.Name
                     << ": "
                     << RetrievedElement.AtomicMass

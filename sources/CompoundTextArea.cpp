@@ -24,10 +24,10 @@ CompoundTextArea::CompoundTextArea
 
 void CompoundTextArea::OnKeyPress(wxKeyEvent &event)
 {
-    if  (
+    if
+        (
         wxIsalnum(event.GetUnicodeKey()) ||
-        event.GetUnicodeKey() == '\b' ||
-        event.GetUnicodeKey() == '\r'
+        wxIscntrl(event.GetUnicodeKey())
         ) // Alphanumeric or backspace
     {
         wxTextCtrl::OnChar(event); // control goes up a hierarchy
@@ -37,6 +37,7 @@ void CompoundTextArea::OnKeyPress(wxKeyEvent &event)
     {
         wxBell();
     }
+
     return;
 }
 

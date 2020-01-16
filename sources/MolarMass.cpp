@@ -13,7 +13,7 @@ std::map<std::string, uint32_t> ParseElementCompoundToMap(std::string& IN_Elemen
     {
         if (isalpha(IN_ElementCompound[index]))
         {
-            IN_ElementCompound[index] = toupper(IN_ElementCompound[index]); // so that the current character will be made lower, prevents crash
+            IN_ElementCompound[index] = toupper(IN_ElementCompound[index]); // so that the current character will be made upper, prevents crash
         }
 
         if (isupper(IN_ElementCompound[index]))

@@ -6,11 +6,13 @@
 #define MAINFRAME_H
 
 #include <wx/wx.h>
+#include "EventHandler.h"
 
 // Forward Declarations
 class PaintWindow;
 class CompoundTextArea;
 class ElementListBox;
+class EventHandler;
 
 enum CUSTOM_ID : unsigned int
 {
