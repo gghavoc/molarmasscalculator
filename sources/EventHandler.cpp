@@ -3,3 +3,14 @@
 //
 
 #include "EventHandler.h"
+
+EventHandler::EventHandler()
+{
+
+    return;
+}
+
+EventHandler::~EventHandler()
+{
+    return;
+}

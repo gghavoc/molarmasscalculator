@@ -19,10 +19,8 @@ class wxStaticText;
 enum CUSTOM_ID : unsigned int
 {
     BtnCalculate = 1,
-    WnwPaint,
     TxtInputArea,
     TxtElementList,
-    FrmClick,
     TxtTotalMass,
 };
 
@@ -31,6 +29,8 @@ class MainFrame : public wxFrame
 
 public:
     MainFrame(const wxString& title);
+    ~MainFrame();
+
 private:
     // private methods
     void OnExit(wxCommandEvent& event);
@@ -47,9 +47,11 @@ private:
     CompoundTextArea* textArea;
     ElementListBox* elementListBox;
     wxStaticText* totalMassText;
+    EventHandler* eventHandler;
 
     // THIS CLASS HANDLES EVENTS
     wxDECLARE_EVENT_TABLE();
 };
+
 
 #endif //MAINFRAME_H

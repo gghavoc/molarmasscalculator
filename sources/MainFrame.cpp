@@ -111,8 +111,9 @@ MainFrame::MainFrame(const wxString& title)
     // Sets icon of window
     this->SetIcon(wxIcon());
 
-    // DYNAMIC BINDING
-    //this->Bind(wxEVT_TEXT_ENTER, &MainFrame::OnButtonCalculate, this, CUSTOM_ID::TxtInputArea);
+    //
+    this->eventHandler = new EventHandler();
+    this->PushEventHandler(eventHandler);
 
     return;
 }
@@ -154,12 +155,12 @@ void MainFrame::OnButtonCalculate(wxCommandEvent &event)
         {
             Element RetrievedElement = GetElementDataFromMap(PairRef.first);
 
-            double ElementTotalMass = RetrievedElement.AtomicMass * (double)PairRef.second;
+            double ElementTotalMass = RetrievedElement.GetAtomicWeight() * (double)PairRef.second;
 
             (*elementListBox)
                     << RetrievedElement.Name
                     << ": "
-                    << RetrievedElement.AtomicMass
+                    << RetrievedElement.GetAtomicWeight()
                     << " X "
                     << PairRef.second
                     << " = "
@@ -186,5 +187,12 @@ void MainFrame::OnClick(wxMouseEvent &event)
     {
         this->SetFocus();
     }
+    return;
+}
+
+
+MainFrame::~MainFrame()
+{
+    this->PopEventHandler(true);
     return;
 }

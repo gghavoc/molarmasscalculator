@@ -7,20 +7,28 @@ using uint32_t = unsigned int;
 
 struct Element
 {
-	Element();
+
+public:
 	Element // Overloaded Constructor
 	(
-		int IN_AtomicNumber,
-		std::string IN_Symbol,
-		double IN_AtomicMass,
-		std::string IN_Name,
-		std::vector<uint32_t>  IN_ElectronConfiguration
+		int IN_AtomicNumber = 0,
+		std::string IN_Symbol = "",
+        double IN_AtomicWeightConv = 0,
+        double IN_AtomicWeightStd = 0,
+		std::string IN_Name = "",
+		std::string  IN_ElectronConfiguration = ""
 	);
 
+public:
 	int AtomicNumber;
-	std::string Symbol;
-	double AtomicMass;
-	std::string Name;
-	std::vector<uint32_t> ElectronConfiguration;
+    std::string Symbol;
+    std::string Name;
+    std::string ElectronConfiguration;
+    double AtomicWeightConv;
+    double AtomicWeightStd;
+
+public:
+    double GetAtomicWeight() const;
+
 };
 #endif // ! _ELEMENT_
