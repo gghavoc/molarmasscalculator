@@ -139,7 +139,7 @@ void MainFrame::OnButtonCalculate(wxCommandEvent &event)
 {
     elementListBox->SetValue(wxEmptyString);
     std::string Compound = textArea->GetValue().ToStdString();
-    std::map<std::string, uint32_t > elementMap = ParseElementCompoundToMap(Compound);
+    std::vector<std::pair<std::string, uint32_t>> elementMap = ParseElementCompoundToVector(Compound);
 
     double totalMass = 0;
 

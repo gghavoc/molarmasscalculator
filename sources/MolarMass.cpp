@@ -1,8 +1,8 @@
 #include "MolarMass.h"
 
-std::map<std::string, uint32_t> ParseElementCompoundToMap(std::string& IN_ElementCompound)
+std::vector<std::pair<std::string, uint32_t>> ParseElementCompoundToVector(std::string& IN_ElementCompound)
 {
-	std::map<std::string, uint32_t> ElementMap; // will store the parsed elements and their atom count
+    std::vector<std::pair<std::string, uint32_t>> ElementVector; // will store the parsed elements and their atom count
 
 	RemoveInvalidCharacters(IN_ElementCompound);
 
@@ -11,6 +11,8 @@ std::map<std::string, uint32_t> ParseElementCompoundToMap(std::string& IN_Elemen
 
     for (uint32_t index = 0; index < IN_ElementCompound.length();)
     {
+        std::pair<std::string, uint32_t> CurrentPair;
+
         if (isalpha(IN_ElementCompound[index]))
         {
             IN_ElementCompound[index] = toupper(IN_ElementCompound[index]); // so that the current character will be made upper, prevents crash
@@ -41,15 +43,20 @@ std::map<std::string, uint32_t> ParseElementCompoundToMap(std::string& IN_Elemen
             AtomCountBuffer = '1'; // if the parsed element has no number next to it, set the it's atomic count to 1
         }
 
+        // FINAL STEPS ONWARDS
+        // Adds the element into the pair
+        CurrentPair.first = ElementSymbolBuffer;
         // Adds to the AtomCount of a symbol inside the map
-        ElementMap[ElementSymbolBuffer] += std::stoi(AtomCountBuffer); // Converts a string into an integer
+        CurrentPair.second += std::stoi(AtomCountBuffer); // Converts a string into an integer
+        // insert the pair to the vector
+        ElementVector.insert(ElementVector.end(), CurrentPair);
 
         // ready the buffer to store a new element and atom count
         ElementSymbolBuffer.clear();
         AtomCountBuffer.clear();
     }
 		
-    return ElementMap;
+    return ElementVector;
 
 }
 
@@ -89,9 +96,9 @@ bool IsValidElement(const std::string& IN_ElementSymbol)
 	return true;
 }
 
-bool HasInvalidElements(const std::map<std::string,uint32_t>& ElementMap)
+bool HasInvalidElements(const std::vector<std::pair<std::string, uint32_t>>& ElementVector)
 {
-	for (const std::pair<std::string,uint32_t>& PairRef : ElementMap)
+	for (const std::pair<std::string,uint32_t>& PairRef : ElementVector)
 	{
 		return !IsValidElement(PairRef.first);
 	}
