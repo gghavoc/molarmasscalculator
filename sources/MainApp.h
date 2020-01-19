@@ -5,7 +5,7 @@
 #ifndef MAINAPP_H
 #define MAINAPP_H
 
-#include <wx/wx.h>
+#include <wx/app.h>
 
 class MainFrame;
 

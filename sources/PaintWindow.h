@@ -5,8 +5,7 @@
 #ifndef PAINTWINDOW_H
 #define PAINTWINDOW_H
 
-#include <wx/wx.h>
-
+#include <wx/window.h>
 
 class PaintWindow : public wxWindow
 {

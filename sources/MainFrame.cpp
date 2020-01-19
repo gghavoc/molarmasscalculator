@@ -6,6 +6,11 @@
 #include "CompoundTextArea.h"
 #include "ElementListBox.h"
 #include "MolarMass.h"
+#include <wx/button.h>
+#include <wx/stattext.h>
+#include <wx/menu.h>
+#include <wx/app.h>
+#include <wx/msgdlg.h>
 
 // STATIC BINDING
 wxBEGIN_EVENT_TABLE(MainFrame,wxFrame)

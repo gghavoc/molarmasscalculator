@@ -3,6 +3,7 @@
 //
 
 #include "PaintWindow.h"
+#include <wx/dcclient.h>
 
 BEGIN_EVENT_TABLE(PaintWindow, wxWindow)
                 EVT_MOTION(PaintWindow::OnMotion)

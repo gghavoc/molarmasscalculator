@@ -5,7 +5,7 @@
 #ifndef MAINFRAME_H
 #define MAINFRAME_H
 
-#include <wx/wx.h>
+#include <wx/frame.h>
 #include "EventHandler.h"
 
 // Forward Declarations
@@ -13,6 +13,8 @@ class PaintWindow;
 class CompoundTextArea;
 class ElementListBox;
 class EventHandler;
+class wxButton;
+class wxStaticText;
 
 enum CUSTOM_ID : unsigned int
 {

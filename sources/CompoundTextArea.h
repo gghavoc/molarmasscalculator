@@ -4,7 +4,7 @@
 
 #ifndef COMPOUNDTEXTAREA_H
 #define COMPOUNDTEXTAREA_H
-#include <wx/wx.h>
+#include <wx/textctrl.h>
 
 
 class CompoundTextArea : public wxTextCtrl

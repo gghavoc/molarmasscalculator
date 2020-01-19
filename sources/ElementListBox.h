@@ -5,7 +5,7 @@
 #ifndef UNTITLED_ELEMENTLISTBOX_H
 #define UNTITLED_ELEMENTLISTBOX_H
 
-#include <wx/wx.h>
+#include <wx/textctrl.h>
 
 
 class ElementListBox : public wxTextCtrl
