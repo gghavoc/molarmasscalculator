@@ -15,6 +15,7 @@ class ElementListBox;
 class EventHandler;
 class wxButton;
 class wxStaticText;
+class ElementResultsList;
 
 enum CUSTOM_ID : unsigned int
 {
@@ -45,7 +46,7 @@ private:
     wxStatusBar* statusBar;
     wxButton* buttonCalculate;
     CompoundTextArea* textArea;
-    ElementListBox* elementListBox;
+    ElementResultsList* elementResultsList;
     wxStaticText* totalMassText;
     EventHandler* eventHandler;
 

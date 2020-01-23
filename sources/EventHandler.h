@@ -17,7 +17,9 @@ public:
 public:
 
 private:
-};
 
+private:
+    wxDECLARE_EVENT_TABLE();
+};
 
 #endif //EVENTHANDLER_H

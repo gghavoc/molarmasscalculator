@@ -4,8 +4,8 @@
 
 #include "MainFrame.h"
 #include "CompoundTextArea.h"
-#include "ElementListBox.h"
 #include "MolarMass.h"
+#include "ElementResultsList.h"
 #include <wx/button.h>
 #include <wx/stattext.h>
 #include <wx/menu.h>
@@ -30,7 +30,8 @@ MainFrame::MainFrame(const wxString& title)
             title,
             wxDefaultPosition,
             wxDefaultSize,
-            wxMINIMIZE_BOX  | wxSYSTEM_MENU | wxCAPTION | wxCLOSE_BOX | wxCLIP_CHILDREN
+            wxMINIMIZE_BOX  | wxSYSTEM_MENU | wxCAPTION | wxCLOSE_BOX |
+            wxCLIP_CHILDREN | wxRESIZE_BORDER | wxMAXIMIZE_BOX 
             )
 {
     // Set Minimum Client Size
@@ -63,14 +64,14 @@ MainFrame::MainFrame(const wxString& title)
             );
 
     // Creates an area where parsed elements are listed
-    elementListBox = new ElementListBox
+    elementResultsList = new ElementResultsList
             (
             this,
             CUSTOM_ID::TxtElementList,
-            wxEmptyString,
             wxPoint(10, 70),
             wxSize(480, 250)
             );
+    elementResultsList->Show(true);
 
     // Creates a text area for total mass
     totalMassText = new wxStaticText
@@ -143,32 +144,16 @@ void MainFrame::OnSize(wxSizeEvent &event)
 
 void MainFrame::OnButtonCalculate(wxCommandEvent &event)
 {
-    elementListBox->SetValue(wxEmptyString);
     std::string Compound = textArea->GetValue().ToStdString();
     std::vector<std::pair<std::string, uint32_t>> elementMap = ParseElementCompoundToVector(Compound);
 
     double totalMass = 0;
 
-    for (const std::pair<const std::string, int >& PairRef : elementMap)
+    for (const std::pair<const std::string, uint32_t >& PairRef : elementMap)
     {
         if (IsValidElement(PairRef.first))
         {
-            Element RetrievedElement = GetElementDataFromMap(PairRef.first);
-
-            double ElementTotalMass = RetrievedElement.GetAtomicWeight() * (double)PairRef.second;
-
-            (*elementListBox)
-                    << RetrievedElement.Name
-                    << ": "
-                    << RetrievedElement.GetAtomicWeight()
-                    << " X "
-                    << PairRef.second
-                    << " = "
-                    << ElementTotalMass
-                    << " g/mol"
-                    << "\n";
-
-            totalMass += ElementTotalMass;
+            elementResultsList->AddResult(PairRef.first, PairRef.second);
         }
         else
         {

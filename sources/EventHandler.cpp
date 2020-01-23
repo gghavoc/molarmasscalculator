@@ -3,6 +3,10 @@
 //
 
 #include "EventHandler.h"
+#include <wx/log.h>
+
+wxBEGIN_EVENT_TABLE(EventHandler, wxEvtHandler)
+wxEND_EVENT_TABLE();
 
 EventHandler::EventHandler()
 {

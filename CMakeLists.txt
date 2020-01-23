@@ -24,7 +24,7 @@ set(MolarMassCalculator
         sources/Element.cpp
         sources/MolarMass.h
         sources/MolarMass.cpp
-        sources/EventHandler.cpp sources/EventHandler.h)
+        sources/EventHandler.cpp sources/EventHandler.h sources/ElementResultsList.cpp sources/ElementResultsList.h)
 add_executable(MolarMassCalculator ${MolarMassCalculator})
 
 target_link_libraries(MolarMassCalculator ${wxWidgets_LIBRARIES})
