@@ -20,6 +20,7 @@ ElementResultsList::ElementResultsList
     const wxString &name
 ) : wxScrolledWindow(parent, Id, pos, size, style, name)
 {
+    this->TotalMass = 0;
     this->SetBackgroundColour(wxColor(255,255,255,255));
 
     return;
@@ -43,8 +44,12 @@ void ElementResultsList::AddResult(const wxString& Symbol, uint32_t AtomCount)
             + std::to_string(ElementTotalMass)
             + " g/mol\n";
 
+    // sets label
     staticTextPtrArr[this->staticTextPtrArr.size()-1]->SetLabelText(ResultString); // REMEMBER THIS FUCKING SHIT!!!
     // std::cout << this->staticTextPtrArr.size() << std::endl;
+
+    // adds to the total mass
+    this->TotalMass += ElementTotalMass;
 
     return;
 }
@@ -56,6 +61,7 @@ void ElementResultsList::ClearResults()
         for (wxStaticText* ref : staticTextPtrArr)
         {
             ref->Destroy();
+            this->TotalMass = 0;
             // std::cout << "Clearing static text..." << std::endl;
 
         }
@@ -63,6 +69,11 @@ void ElementResultsList::ClearResults()
     }
 
     return;
+}
+
+double ElementResultsList::GetTotalMass() const
+{
+    return this->TotalMass;
 }
 
 ElementResultsList::~ElementResultsList()

@@ -8,7 +8,6 @@
 #include "ElementResultsList.h"
 #include "TotalTextOutput.h"
 #include <wx/button.h>
-#include <wx/stattext.h>
 #include <wx/menu.h>
 #include <wx/app.h>
 #include <wx/msgdlg.h>
@@ -76,9 +75,9 @@ MainFrame::MainFrame(const wxString& title)
     totalTextOutput = new TotalTextOutput
             (
                 this,
-                wxID_ANY,
+                CUSTOM_ID::TxtTotalMass,
                 wxDefaultPosition,
-                wxDefaultSize
+                wxSize(480,50)
             );
 
 
@@ -109,31 +108,21 @@ MainFrame::MainFrame(const wxString& title)
     // Sets icon of window
     this->SetIcon(wxIcon());
 
-    // event handler, experiment
-    this->eventHandler = new EventHandler();
-    this->PushEventHandler(eventHandler);
-
     // sizer
     topVertSizer = new wxBoxSizer(wxVERTICAL);
     childTopHorSizer = new wxBoxSizer(wxHORIZONTAL);
-    childBottomHorSizer = new wxBoxSizer(wxHORIZONTAL);
-    childBottomVertSizer = new wxBoxSizer(wxVERTICAL);
 
     // Attaches top level sizer to the frame
     this->SetSizer(topVertSizer, true);
 
     // input area
-    childTopHorSizer->Add(textArea, 1,   wxALL | wxEXPAND, 5);
-    childTopHorSizer->Add(buttonCalculate, 0,  wxALL , 5);
-
-    // total mass
-    childBottomHorSizer->Add(childBottomVertSizer, 1,   wxALIGN_CENTER_VERTICAL | wxALL , 5);
-    childBottomVertSizer->Add(totalTextOutput, 1, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
+    childTopHorSizer->Add(textArea, 1,   wxTOP | wxLEFT | wxRIGHT | wxEXPAND, 5);
+    childTopHorSizer->Add(buttonCalculate, 0,  wxTOP | wxLEFT | wxRIGHT | wxEXPAND , 5);
 
     // Adds children to the top level sizer
-    topVertSizer->Add(childTopHorSizer, 0, wxALL | wxEXPAND, 5);
-    topVertSizer->Add(elementResultsList, 1, wxALL | wxEXPAND , 10);
-    topVertSizer->Add(childBottomHorSizer, 0, wxALL | wxEXPAND, 5);
+    topVertSizer->Add(childTopHorSizer, 0, wxTOP | wxLEFT | wxRIGHT  | wxEXPAND, 5);
+    topVertSizer->Add(elementResultsList, 1, wxTOP | wxLEFT | wxRIGHT  | wxEXPAND , 10);
+    topVertSizer->Add(totalTextOutput, 0,  wxTOP | wxLEFT | wxRIGHT  | wxEXPAND, 10);
 
     return;
 }
@@ -168,8 +157,6 @@ void MainFrame::OnButtonCalculate(wxCommandEvent &event)
 
     elementResultsList->ClearResults();
 
-    double totalMass = 0;
-
     for (const std::pair<const std::string, uint32_t >& PairRef : elementMap)
     {
         if (IsValidElement(PairRef.first))
@@ -181,8 +168,8 @@ void MainFrame::OnButtonCalculate(wxCommandEvent &event)
             wxLogMessage(wxT("Please recheck your entries."));
         }
     }
-//    wxString massString = wxString::Format(wxT("Total Mass: %f"), totalMass);
-//    totalTextOutput->SetText(massString);
+
+    totalTextOutput->SetText(wxString::Format(wxT("Total Mass: %f"), elementResultsList->GetTotalMass()));
 
     return;
 }
@@ -199,6 +186,5 @@ void MainFrame::OnClick(wxMouseEvent &event)
 
 MainFrame::~MainFrame()
 {
-    this->PopEventHandler(true);
     return;
 }

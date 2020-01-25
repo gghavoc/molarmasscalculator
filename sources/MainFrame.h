@@ -6,13 +6,11 @@
 #define MAINFRAME_H
 
 #include <wx/frame.h>
-#include "EventHandler.h"
 
 // Forward Declarations
 class PaintWindow;
 class CompoundTextArea;
 class ElementListBox;
-class EventHandler;
 class wxButton;
 class wxStaticText;
 class wxBoxSizer;
@@ -49,12 +47,9 @@ private:
     wxButton* buttonCalculate;
     CompoundTextArea* textArea;
     ElementResultsList* elementResultsList;
-    EventHandler* eventHandler;
     TotalTextOutput* totalTextOutput;
     wxBoxSizer* topVertSizer; // top level sizer
     wxBoxSizer* childTopHorSizer; // sizer of textArea and buttonCalculate
-    wxBoxSizer* childBottomHorSizer; // sizer of totalmass
-    wxBoxSizer* childBottomVertSizer; // just to centralize
 
     // THIS CLASS HANDLES EVENTS
     wxDECLARE_EVENT_TABLE();

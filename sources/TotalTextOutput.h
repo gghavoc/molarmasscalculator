@@ -30,7 +30,7 @@ public:
 
 private:
     wxStaticText* totalText;
-    wxBoxSizer* topVertSizer;
+    wxBoxSizer* topHorSizer;
 
 private:
     wxDECLARE_EVENT_TABLE();

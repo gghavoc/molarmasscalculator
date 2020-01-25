@@ -5,6 +5,7 @@
 #include "TotalTextOutput.h"
 #include <wx/stattext.h>
 #include <wx/sizer.h>
+#include <iostream>
 
 wxBEGIN_EVENT_TABLE(TotalTextOutput, wxScrolledWindow)
 wxEND_EVENT_TABLE()
@@ -20,7 +21,8 @@ TotalTextOutput::TotalTextOutput
 ) :
     wxScrolledWindow(parent, Id, pos, size, style, name)
 {
-    topVertSizer = new wxBoxSizer(wxVERTICAL);
+    totalText = nullptr;
+    topHorSizer = new wxBoxSizer(wxHORIZONTAL);
     return;
 }
 
@@ -29,11 +31,13 @@ void TotalTextOutput::SetText(const wxString& total)
     // checks if totaltext has value, delete it if it is
     if (totalText)
     {
+        topHorSizer->Detach(totalText);
         totalText->Destroy();
     };
 
-    totalText = new wxStaticText(this, wxID_ANY, wxEmptyString);
-    totalText->SetLabel(total);
+    totalText = new wxStaticText(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL);
+    totalText->SetLabelMarkup("<big>" + total + "</big>");
+    topHorSizer->Add(totalText, 1, wxEXPAND | wxALL, 10);
 
     return;
 }

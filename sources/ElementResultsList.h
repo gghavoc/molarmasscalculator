@@ -27,11 +27,11 @@ public:
 public:
     void AddResult(const wxString& Symbol, const uint32_t  AtomCount = 1);
     void ClearResults();
-
-public:
+    double GetTotalMass() const;
 
 private:
     wxVector<wxStaticText*> staticTextPtrArr;
+    double TotalMass;
 
     void OnMouse(wxMouseEvent& event);
 

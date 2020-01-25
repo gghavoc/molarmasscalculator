@@ -16,7 +16,7 @@ CompoundTextArea::CompoundTextArea
         const wxPoint& position,
         const wxSize& size
     ) :
-        wxTextCtrl(parent, id, value, position, size, wxTE_PROCESS_ENTER | wxTE_NO_VSCROLL | wxTE_PROCESS_TAB )
+        wxTextCtrl(parent, id, value, position, size, wxHSCROLL |  wxTE_PROCESS_ENTER | wxTE_PROCESS_TAB )
 {
     this->SetHint("Compound");
     return;
