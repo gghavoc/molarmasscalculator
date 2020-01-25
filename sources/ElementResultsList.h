@@ -8,6 +8,8 @@
 #include <wx/scrolwin.h>
 #include <wx/stattext.h>
 
+class wxBoxSizer;
+
 class ElementResultsList : public wxScrolledWindow
 {
 public:
@@ -17,20 +19,23 @@ public:
         wxWindowID Id = wxID_ANY,
         const wxPoint& pos = wxDefaultPosition,
         const wxSize& size = wxDefaultSize,
-        long style = wxScrolledWindowStyle,
+        long style = wxVSCROLL | wxBORDER_SIMPLE,
         const wxString& name = wxPanelNameStr
     );
     ~ElementResultsList();
 
 public:
-    void AddResult(const wxString Symbol, const uint32_t  AtomCount = 1);
+    void AddResult(const wxString& Symbol, const uint32_t  AtomCount = 1);
+    void ClearResults();
 
 public:
 
 private:
-    inline static uint32_t  elementAmount;
     wxVector<wxStaticText*> staticTextPtrArr;
+
     void OnMouse(wxMouseEvent& event);
+
+
 private:
     wxDECLARE_EVENT_TABLE();
 };

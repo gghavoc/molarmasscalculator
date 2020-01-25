@@ -6,11 +6,13 @@
 #include "CompoundTextArea.h"
 #include "MolarMass.h"
 #include "ElementResultsList.h"
+#include "TotalTextOutput.h"
 #include <wx/button.h>
 #include <wx/stattext.h>
 #include <wx/menu.h>
 #include <wx/app.h>
 #include <wx/msgdlg.h>
+#include <wx/sizer.h>
 
 // STATIC BINDING
 wxBEGIN_EVENT_TABLE(MainFrame,wxFrame)
@@ -31,14 +33,11 @@ MainFrame::MainFrame(const wxString& title)
             wxDefaultPosition,
             wxDefaultSize,
             wxMINIMIZE_BOX  | wxSYSTEM_MENU | wxCAPTION | wxCLOSE_BOX |
-            wxCLIP_CHILDREN | wxRESIZE_BORDER | wxMAXIMIZE_BOX 
+            wxCLIP_CHILDREN | wxRESIZE_BORDER | wxMAXIMIZE_BOX
             )
 {
-    // Set Minimum Client Size
-    this->SetMinClientSize(wxSize(500,460));
-
-    // Set startup size
-    this->SetSize(wxSize(500,460));
+    // Sets minimum size to the main frame
+    this->SetMinSize(wxSize(500,460));
 
     // Make frame focusable
     this->SetCanFocus(true);
@@ -74,16 +73,14 @@ MainFrame::MainFrame(const wxString& title)
     elementResultsList->Show(true);
 
     // Creates a text area for total mass
-    totalMassText = new wxStaticText
+    totalTextOutput = new TotalTextOutput
             (
-            this,
-            CUSTOM_ID::TxtTotalMass,
-            wxEmptyString,
-            wxPoint(10, 330),
-            wxSize(480, 50),
-            wxALIGN_CENTRE_HORIZONTAL
+                this,
+                wxID_ANY,
+                wxDefaultPosition,
+                wxDefaultSize
             );
-    totalMassText->SetBackgroundColour(wxColour(0,255,0,100));
+
 
     // Creates menu
     menuFile = new wxMenu();
@@ -112,9 +109,31 @@ MainFrame::MainFrame(const wxString& title)
     // Sets icon of window
     this->SetIcon(wxIcon());
 
-    //
+    // event handler, experiment
     this->eventHandler = new EventHandler();
     this->PushEventHandler(eventHandler);
+
+    // sizer
+    topVertSizer = new wxBoxSizer(wxVERTICAL);
+    childTopHorSizer = new wxBoxSizer(wxHORIZONTAL);
+    childBottomHorSizer = new wxBoxSizer(wxHORIZONTAL);
+    childBottomVertSizer = new wxBoxSizer(wxVERTICAL);
+
+    // Attaches top level sizer to the frame
+    this->SetSizer(topVertSizer, true);
+
+    // input area
+    childTopHorSizer->Add(textArea, 1,   wxALL | wxEXPAND, 5);
+    childTopHorSizer->Add(buttonCalculate, 0,  wxALL , 5);
+
+    // total mass
+    childBottomHorSizer->Add(childBottomVertSizer, 1,   wxALIGN_CENTER_VERTICAL | wxALL , 5);
+    childBottomVertSizer->Add(totalTextOutput, 1, wxALIGN_CENTER_HORIZONTAL | wxALL, 5);
+
+    // Adds children to the top level sizer
+    topVertSizer->Add(childTopHorSizer, 0, wxALL | wxEXPAND, 5);
+    topVertSizer->Add(elementResultsList, 1, wxALL | wxEXPAND , 10);
+    topVertSizer->Add(childBottomHorSizer, 0, wxALL | wxEXPAND, 5);
 
     return;
 }
@@ -147,6 +166,8 @@ void MainFrame::OnButtonCalculate(wxCommandEvent &event)
     std::string Compound = textArea->GetValue().ToStdString();
     std::vector<std::pair<std::string, uint32_t>> elementMap = ParseElementCompoundToVector(Compound);
 
+    elementResultsList->ClearResults();
+
     double totalMass = 0;
 
     for (const std::pair<const std::string, uint32_t >& PairRef : elementMap)
@@ -160,8 +181,8 @@ void MainFrame::OnButtonCalculate(wxCommandEvent &event)
             wxLogMessage(wxT("Please recheck your entries."));
         }
     }
-    wxString massString = wxString::Format(wxT("Total Mass: %f"), totalMass);
-    totalMassText->SetLabel(massString);
+//    wxString massString = wxString::Format(wxT("Total Mass: %f"), totalMass);
+//    totalTextOutput->SetText(massString);
 
     return;
 }

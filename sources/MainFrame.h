@@ -15,7 +15,9 @@ class ElementListBox;
 class EventHandler;
 class wxButton;
 class wxStaticText;
+class wxBoxSizer;
 class ElementResultsList;
+class TotalTextOutput;
 
 enum CUSTOM_ID : unsigned int
 {
@@ -47,8 +49,12 @@ private:
     wxButton* buttonCalculate;
     CompoundTextArea* textArea;
     ElementResultsList* elementResultsList;
-    wxStaticText* totalMassText;
     EventHandler* eventHandler;
+    TotalTextOutput* totalTextOutput;
+    wxBoxSizer* topVertSizer; // top level sizer
+    wxBoxSizer* childTopHorSizer; // sizer of textArea and buttonCalculate
+    wxBoxSizer* childBottomHorSizer; // sizer of totalmass
+    wxBoxSizer* childBottomVertSizer; // just to centralize
 
     // THIS CLASS HANDLES EVENTS
     wxDECLARE_EVENT_TABLE();
