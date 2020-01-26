@@ -1,7 +1,0 @@
-<component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="MolarMassCalculator" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="MolarMassCalculator" TARGET_NAME="MolarMassCalculator" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="MolarMassCalculator" RUN_TARGET_NAME="MolarMassCalculator">
-    <method v="2">
-      <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-    </method>
-  </configuration>
-</component>
