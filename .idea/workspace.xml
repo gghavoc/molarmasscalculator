@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="MolarMassCalculator" targetName="MolarMassCalculator" />
+    </generated>
+  </component>
+  <component name="CMakeSettings" AUTO_RELOAD="true">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c33d255b-a5d5-4a25-ad3a-288b18daaba6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1WKN6mVTQMRapqAfIvPOfyl0Kbe" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sources/resources/png" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c33d255b-a5d5-4a25-ad3a-288b18daaba6" name="Default Changelist" comment="" />
+      <created>1578894153119</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578894153119</updated>
+      <workItem from="1578894154695" duration="18497000" />
+      <workItem from="1578961880191" duration="21755000" />
+      <workItem from="1578990257991" duration="9490000" />
+      <workItem from="1579089098524" duration="1063000" />
+      <workItem from="1579169706929" duration="8480000" />
+      <workItem from="1579392035799" duration="28221000" />
+      <workItem from="1579433632806" duration="4345000" />
+      <workItem from="1579770032998" duration="16534000" />
+      <workItem from="1579886409578" duration="602000" />
+      <workItem from="1579888233990" duration="687000" />
+      <workItem from="1579913696675" duration="25228000" />
+      <workItem from="1580000254506" duration="53000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="141" y="21" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580000309815">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="141" y="21" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1580000309815" />
+    <state x="386" y="141" key="#xdebugger.evaluate" timestamp="1579929481442">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="386" y="141" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1579929481442" />
+    <state width="1324" height="216" key="GridCell.Tab.0.bottom" timestamp="1579940797175">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1324" height="216" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1579940797175" />
+    <state width="1324" height="216" key="GridCell.Tab.0.center" timestamp="1579940797175">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1324" height="216" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1579940797175" />
+    <state width="1324" height="216" key="GridCell.Tab.0.left" timestamp="1579940797174">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1324" height="216" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1579940797174" />
+    <state width="1324" height="216" key="GridCell.Tab.0.right" timestamp="1579940797175">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1324" height="216" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1579940797175" />
+    <state width="1324" height="216" key="GridCell.Tab.1.bottom" timestamp="1579940797176">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1324" height="216" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1579940797176" />
+    <state width="1324" height="216" key="GridCell.Tab.1.center" timestamp="1579940797175">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1324" height="216" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1579940797175" />
+    <state width="1324" height="216" key="GridCell.Tab.1.left" timestamp="1579940797175">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1324" height="216" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1579940797175" />
+    <state width="1324" height="216" key="GridCell.Tab.1.right" timestamp="1579940797176">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1324" height="216" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1579940797176" />
+    <state x="366" y="190" key="com.intellij.ide.util.TipDialog" timestamp="1580000276410">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="366" y="190" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1580000276410" />
+    <state x="5" y="160" key="run.anything.popup" timestamp="1579418403336">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="5" y="160" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1579418403336" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1579171932248">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1579171932248" />
+  </component>
+</project>

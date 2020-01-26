@@ -50,6 +50,8 @@ MainFrame::MainFrame(const wxString& title)
             wxPoint(390, 10),
             wxSize(100,50)
             );
+    buttonCalculate->SetToolTip(wxT("Calculate the total mass (g/mol) of the compound"));
+
 
     // Create a text input area
     textArea = new CompoundTextArea
@@ -60,6 +62,7 @@ MainFrame::MainFrame(const wxString& title)
             wxPoint(10,10),
             wxSize(370,50)
             );
+    textArea->SetToolTip(wxT("Enter a syntax-correct compound"));
 
     // Creates an area where parsed elements are listed
     elementResultsList = new ElementResultsList
@@ -182,7 +185,6 @@ void MainFrame::OnClick(wxMouseEvent &event)
     }
     return;
 }
-
 
 MainFrame::~MainFrame()
 {

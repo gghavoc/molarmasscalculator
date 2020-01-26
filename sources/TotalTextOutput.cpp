@@ -17,27 +17,27 @@ TotalTextOutput::TotalTextOutput
     const wxPoint &pos,
     const wxSize &size,
     long style,
-     const wxString &name
+    const wxString &name
 ) :
     wxScrolledWindow(parent, Id, pos, size, style, name)
 {
-    totalText = nullptr;
-    topHorSizer = new wxBoxSizer(wxHORIZONTAL);
+    this->totalText = nullptr;
+    this->topHorSizer = new wxBoxSizer(wxVERTICAL);
     return;
 }
 
 void TotalTextOutput::SetText(const wxString& total)
 {
     // checks if totaltext has value, delete it if it is
-    if (totalText)
+    if (this->totalText)
     {
-        topHorSizer->Detach(totalText);
-        totalText->Destroy();
+        this->topHorSizer->Detach(totalText);
+        this->totalText->Destroy();
     };
 
-    totalText = new wxStaticText(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxALIGN_CENTRE_HORIZONTAL);
-    totalText->SetLabelMarkup("<big>" + total + "</big>");
-    topHorSizer->Add(totalText, 1, wxEXPAND | wxALL, 10);
+    this->totalText = new wxStaticText(this, wxID_ANY, "");
+    this->totalText->SetLabelMarkup("<big>" + total + "</big>");
+    this->topHorSizer->Add(this->totalText, 1, wxALL | wxALIGN_CENTER, 10);
 
     return;
 }

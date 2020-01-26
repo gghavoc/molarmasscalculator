@@ -19,7 +19,7 @@ class TotalTextOutput;
 
 enum CUSTOM_ID : unsigned int
 {
-    BtnCalculate = 1,
+    BtnCalculate = wxID_HIGHEST,
     TxtInputArea,
     TxtElementList,
     TxtTotalMass,
@@ -40,6 +40,7 @@ private:
     void OnButtonCalculate(wxCommandEvent& event);
     void OnClick(wxMouseEvent& event);
 
+private:
     // private data members
     wxMenu* menuFile;
     wxMenuBar* menuBar;
