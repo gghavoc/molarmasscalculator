@@ -1,7 +1,6 @@
 //
 // Created by clarence on 13/01/2020.
 //
-
 #include "MainApp.h"
 #include "MainFrame.h"
 

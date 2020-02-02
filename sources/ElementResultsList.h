@@ -6,9 +6,11 @@
 #define MOLARMASSCALCULATOR_ELEMENTRESULTSLIST_H
 
 #include <wx/scrolwin.h>
+#include <wx/window.h>
 #include <wx/stattext.h>
 
 class wxBoxSizer;
+class ElementResultsListEntry;
 
 class ElementResultsList : public wxScrolledWindow
 {
@@ -19,7 +21,7 @@ public:
         wxWindowID Id = wxID_ANY,
         const wxPoint& pos = wxDefaultPosition,
         const wxSize& size = wxDefaultSize,
-        long style = wxVSCROLL | wxBORDER_SIMPLE,
+        long style = wxVSCROLL | wxBORDER_THEME,
         const wxString& name = wxPanelNameStr
     );
     ~ElementResultsList();
@@ -30,11 +32,11 @@ public:
     double GetTotalMass() const;
 
 private:
-    wxVector<wxStaticText*> staticTextPtrArr;
-    wxBoxSizer* mainSizer;
-    double TotalMass;
 
 private:
+    wxVector<ElementResultsListEntry*> entryArr;
+    wxBoxSizer* mainSizer;
+    double TotalMass;
 
 private:
     wxDECLARE_EVENT_TABLE();

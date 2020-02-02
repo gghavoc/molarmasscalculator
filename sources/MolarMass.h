@@ -29,6 +29,9 @@ std::string ToTitleCase(std::string TheString);
 // Helper
 bool IsValidElement(const std::string& IN_ElementSymbol);
 
+// Helper
+char GetOppositeBracket(char Bracket);
+
 // Takes in an element symbol and returns the element attached to it
 Element GetElementDataFromMap(const std::string IN_ElementSymbol);
 

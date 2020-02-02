@@ -4,6 +4,7 @@
 
 #include "ElementResultsList.h"
 #include "MolarMass.h"
+#include "ElementResultsListEntry.h"
 #include <wx/log.h>
 #include <wx/sizer.h>
 
@@ -33,26 +34,14 @@ void ElementResultsList::AddResult(const wxString& Symbol, uint32_t AtomCount)
 {
     Element RetrievedElement = GetElementDataFromMap(Symbol.ToStdString());
 
-    double ElementTotalMass = RetrievedElement.GetAtomicWeight() * (double)AtomCount;
+    double ElementTotalMass = RetrievedElement.GetAtomicWeight() * (double) AtomCount;
 
-    staticTextPtrArr.insert(staticTextPtrArr.end(), new wxStaticText(this, wxID_ANY, wxT("")));
+    entryArr.insert(entryArr.end(), new ElementResultsListEntry(this, RetrievedElement, AtomCount));
 
-    wxString ResultString =
-            RetrievedElement.Name
-            + ": "
-            + std::to_string(RetrievedElement.GetAtomicWeight())
-            + " X "
-            + std::to_string(AtomCount)
-            + " = "
-            + std::to_string(ElementTotalMass)
-            + " g/mol\n";
-
-    // sets label
-    staticTextPtrArr[this->staticTextPtrArr.size()-1]->SetLabelText(ResultString);
-    staticTextPtrArr[this->staticTextPtrArr.size()-1]->SetBackgroundColour(wxColour(0,255,255,50));
+    entryArr[this->entryArr.size()-1]->SetBackgroundColour(wxColour(0,255,255,20));
 
     // adds to the sizer
-    this->mainSizer->Add(staticTextPtrArr[this->staticTextPtrArr.size()-1], 0, wxEXPAND | wxALIGN_CENTER_HORIZONTAL | wxALL , 5);
+    this->mainSizer->Add(entryArr[this->entryArr.size()-1], 0, wxEXPAND | wxRIGHT | wxTOP | wxRIGHT | wxLEFT, 5);
 
     // to refresh layout
     this->Layout();
@@ -67,15 +56,15 @@ void ElementResultsList::AddResult(const wxString& Symbol, uint32_t AtomCount)
 
 void ElementResultsList::ClearResults()
 {
-    if (!this->staticTextPtrArr.empty())
+    if (!this->entryArr.empty())
     {
-        for (wxStaticText* ref : staticTextPtrArr)
+        for (ElementResultsListEntry* ref : entryArr)
         {
             this->mainSizer->Detach(ref);
             ref->Destroy();
             this->TotalMass = 0;
         }
-        staticTextPtrArr.clear();
+        entryArr.clear();
     }
 
     return;

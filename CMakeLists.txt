@@ -103,7 +103,7 @@ if (UNIX)
 
 endif()
 
-find_package(wxWidgets "COMPONENTS" "core" "base"  "REQUIRED")
+find_package(wxWidgets COMPONENTS core base REQUIRED)
 include("${wxWidgets_USE_FILE}")
 
 message(STATUS "wxWidgets USE FILE: ${wxWidgets_USE_FILE}")
@@ -118,8 +118,6 @@ set(SRC_FILES
         sources/PaintWindow.h
         sources/CompoundTextArea.cpp
         sources/CompoundTextArea.h
-        sources/ElementListBox.cpp
-        sources/ElementListBox.h
         sources/Element.h
         sources/Element.cpp
         sources/MolarMass.h
@@ -132,6 +130,8 @@ set(SRC_FILES
         sources/TotalTextOutput.h
         sources/ElementBox.cpp
         sources/ElementBox.h
+        sources/ElementResultsListEntry.cpp
+        sources/ElementResultsListEntry.h
     )
 
 add_executable(MolarMassCalculator "${SRC_FILES}")

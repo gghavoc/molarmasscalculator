@@ -5,7 +5,7 @@
 #include "CompoundTextArea.h"
 
 wxBEGIN_EVENT_TABLE(CompoundTextArea, wxTextCtrl)
-                EVT_KEY_DOWN(CompoundTextArea::OnKeyPress)
+                EVT_CHAR(CompoundTextArea::OnKeyPress)
 wxEND_EVENT_TABLE();
 
 CompoundTextArea::CompoundTextArea
@@ -18,7 +18,6 @@ CompoundTextArea::CompoundTextArea
     ) :
         wxTextCtrl(parent, id, value, position, size, wxHSCROLL |  wxTE_PROCESS_ENTER | wxTE_PROCESS_TAB )
 {
-    this->SetHint("Compound");
     return;
 }
 
@@ -27,17 +26,20 @@ void CompoundTextArea::OnKeyPress(wxKeyEvent &event)
     if
         (
         wxIsalnum(event.GetUnicodeKey()) ||
-        wxIscntrl(event.GetUnicodeKey())
-        ) // Alphanumeric or backspace
+        wxIscntrl(event.GetUnicodeKey()) ||
+        event.GetUnicodeKey() == '(' ||
+        event.GetUnicodeKey() == ')' ||
+        event.GetUnicodeKey() == '[' ||
+        event.GetUnicodeKey() == ']' ||
+        event.GetUnicodeKey() == '{' ||
+        event.GetUnicodeKey() == '}' ||
+        event.GetUnicodeKey() == '<' ||
+        event.GetUnicodeKey() == '>'
+        ) // Alphanumeric, control characters or types of brackets
     {
         wxTextCtrl::OnChar(event); // control goes up a hierarchy
         // you can also use event.Skip() to go up a hierarchy
     }
-    else
-    {
-        wxBell();
-    }
-
     return;
 }
 
