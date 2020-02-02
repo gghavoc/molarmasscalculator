@@ -31,10 +31,10 @@ public:
 
 private:
     wxVector<wxStaticText*> staticTextPtrArr;
+    wxBoxSizer* mainSizer;
     double TotalMass;
 
-    void OnMouse(wxMouseEvent& event);
-
+private:
 
 private:
     wxDECLARE_EVENT_TABLE();

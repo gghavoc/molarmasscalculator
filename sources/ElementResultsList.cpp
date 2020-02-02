@@ -22,6 +22,9 @@ ElementResultsList::ElementResultsList
 {
     this->TotalMass = 0;
     this->SetBackgroundColour(wxColor(255,255,255,255));
+    this->mainSizer = new wxBoxSizer(wxVERTICAL);
+    this->SetSizer(this->mainSizer);
+    this->SetScrollRate(5,5);
 
     return;
 }
@@ -32,7 +35,7 @@ void ElementResultsList::AddResult(const wxString& Symbol, uint32_t AtomCount)
 
     double ElementTotalMass = RetrievedElement.GetAtomicWeight() * (double)AtomCount;
 
-    staticTextPtrArr.insert(staticTextPtrArr.end(), new wxStaticText(this, wxID_ANY, wxT("Text")));
+    staticTextPtrArr.insert(staticTextPtrArr.end(), new wxStaticText(this, wxID_ANY, wxT("")));
 
     wxString ResultString =
             RetrievedElement.Name
@@ -45,8 +48,16 @@ void ElementResultsList::AddResult(const wxString& Symbol, uint32_t AtomCount)
             + " g/mol\n";
 
     // sets label
-    staticTextPtrArr[this->staticTextPtrArr.size()-1]->SetLabelText(ResultString); // REMEMBER THIS FUCKING SHIT!!!
-    // std::cout << this->staticTextPtrArr.size() << std::endl;
+    staticTextPtrArr[this->staticTextPtrArr.size()-1]->SetLabelText(ResultString);
+    staticTextPtrArr[this->staticTextPtrArr.size()-1]->SetBackgroundColour(wxColour(0,255,255,50));
+
+    // adds to the sizer
+    this->mainSizer->Add(staticTextPtrArr[this->staticTextPtrArr.size()-1], 0, wxEXPAND | wxALIGN_CENTER_HORIZONTAL | wxALL , 5);
+
+    // to refresh layout
+    this->Layout();
+
+    this->FitInside();
 
     // adds to the total mass
     this->TotalMass += ElementTotalMass;
@@ -60,10 +71,9 @@ void ElementResultsList::ClearResults()
     {
         for (wxStaticText* ref : staticTextPtrArr)
         {
+            this->mainSizer->Detach(ref);
             ref->Destroy();
             this->TotalMass = 0;
-            // std::cout << "Clearing static text..." << std::endl;
-
         }
         staticTextPtrArr.clear();
     }
@@ -75,7 +85,6 @@ double ElementResultsList::GetTotalMass() const
 {
     return this->TotalMass;
 }
-
 ElementResultsList::~ElementResultsList()
 {
     this->ClearResults();

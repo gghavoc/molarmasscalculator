@@ -6,6 +6,7 @@
 #define MOLARMASSCALCULATOR_TOTALTEXTOUTPUT_H
 
 #include <wx/scrolwin.h>
+#include <wx/button.h>
 
 // forward declaration
 class wxStaticText;
@@ -20,7 +21,7 @@ public:
         wxWindowID Id = wxID_ANY,
         const wxPoint& pos = wxDefaultPosition,
         const wxSize& size = wxDefaultSize,
-        long style = wxHSCROLL | wxBORDER_SIMPLE,
+        long style = wxBORDER_SIMPLE,
         const wxString& name = wxPanelNameStr
     );
     ~TotalTextOutput();
@@ -31,6 +32,8 @@ public:
 private:
     wxStaticText* totalText;
     wxBoxSizer* topHorSizer;
+
+private:
 
 private:
     wxDECLARE_EVENT_TABLE();

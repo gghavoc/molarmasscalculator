@@ -23,21 +23,17 @@ TotalTextOutput::TotalTextOutput
 {
     this->totalText = nullptr;
     this->topHorSizer = new wxBoxSizer(wxVERTICAL);
+    this->SetSizer(this->topHorSizer);
+    this->totalText = new wxStaticText(this, wxID_ANY, "");
+    this->topHorSizer->Add(this->totalText, 1, wxALL | wxALIGN_CENTER_HORIZONTAL, 15);
     return;
 }
 
 void TotalTextOutput::SetText(const wxString& total)
 {
-    // checks if totaltext has value, delete it if it is
-    if (this->totalText)
-    {
-        this->topHorSizer->Detach(totalText);
-        this->totalText->Destroy();
-    };
-
-    this->totalText = new wxStaticText(this, wxID_ANY, "");
+    // checks if totaltext has value, detach it from sizer and destroy it if it has
     this->totalText->SetLabelMarkup("<big>" + total + "</big>");
-    this->topHorSizer->Add(this->totalText, 1, wxALL | wxALIGN_CENTER, 10);
+    this->Layout();
 
     return;
 }
@@ -46,6 +42,3 @@ TotalTextOutput::~TotalTextOutput()
 {
     return;
 }
-
-
-

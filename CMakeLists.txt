@@ -130,6 +130,8 @@ set(SRC_FILES
         sources/ElementResultsList.h
         sources/TotalTextOutput.cpp
         sources/TotalTextOutput.h
+        sources/ElementBox.cpp
+        sources/ElementBox.h
     )
 
 add_executable(MolarMassCalculator "${SRC_FILES}")

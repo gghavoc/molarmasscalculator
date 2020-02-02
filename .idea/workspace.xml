@@ -12,8 +12,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c33d255b-a5d5-4a25-ad3a-288b18daaba6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/sources/ElementBox.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sources/ElementBox.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sources/ElementResultsList.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sources/ElementResultsList.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sources/ElementResultsList.h" beforeDir="false" afterPath="$PROJECT_DIR$/sources/ElementResultsList.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sources/TotalTextOutput.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sources/TotalTextOutput.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sources/TotalTextOutput.h" beforeDir="false" afterPath="$PROJECT_DIR$/sources/TotalTextOutput.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,6 +126,9 @@
       <workItem from="1580085373862" duration="239000" />
       <workItem from="1580090276388" duration="635000" />
       <workItem from="1580091117964" duration="1780000" />
+      <workItem from="1580460371997" duration="945000" />
+      <workItem from="1580520296289" duration="8105000" />
+      <workItem from="1580599813171" duration="6025000" />
     </task>
     <servers />
   </component>
@@ -140,25 +149,25 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1580012395211" />
-    <state width="1324" height="169" key="GridCell.Tab.0.bottom" timestamp="1580092897997">
+    <state width="1324" height="169" key="GridCell.Tab.0.bottom" timestamp="1580609033548">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1324" height="169" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580092897997" />
+    <state width="1324" height="169" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1580609033548" />
     <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1580035588685" />
-    <state width="1324" height="169" key="GridCell.Tab.0.center" timestamp="1580092897997">
+    <state width="1324" height="169" key="GridCell.Tab.0.center" timestamp="1580609033548">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1324" height="169" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580092897997" />
+    <state width="1324" height="169" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1580609033548" />
     <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1580035588684" />
-    <state width="1324" height="169" key="GridCell.Tab.0.left" timestamp="1580092897996">
+    <state width="1324" height="169" key="GridCell.Tab.0.left" timestamp="1580609033547">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1324" height="169" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580092897996" />
+    <state width="1324" height="169" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1580609033547" />
     <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1580035588684" />
-    <state width="1324" height="169" key="GridCell.Tab.0.right" timestamp="1580092897997">
+    <state width="1324" height="169" key="GridCell.Tab.0.right" timestamp="1580609033548">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1324" height="169" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580092897997" />
+    <state width="1324" height="169" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580609033548" />
     <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1580035588684" />
     <state width="1324" height="216" key="GridCell.Tab.1.bottom" timestamp="1579940797176">
       <screen x="0" y="0" width="1366" height="728" />
@@ -184,11 +193,15 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.738@0.0.1366.738" timestamp="1580027197869" />
-    <state x="366" y="190" key="com.intellij.ide.util.TipDialog" timestamp="1580091118321">
+    <state x="366" y="190" key="com.intellij.ide.util.TipDialog" timestamp="1580599812638">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="366" y="190" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1580091118321" />
+    <state x="366" y="190" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1580599812638" />
     <state x="366" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1580025361344" />
+    <state x="427" y="9" width="501" height="702" key="refactoring.ChangeSignatureDialog" timestamp="1580604492865">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="427" y="9" width="501" height="702" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1580604492865" />
     <state x="5" y="162" key="run.anything.popup" timestamp="1580008086758">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
