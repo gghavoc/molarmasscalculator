@@ -29,6 +29,12 @@ std::string ToTitleCase(std::string TheString);
 // Helper
 bool IsValidElement(const std::string& IN_ElementSymbol);
 
+bool IsValidCharacter(char& ref);
+
+bool IsOpeningBracket(char& ref);
+
+bool IsClosingBracket(char& ref);
+
 // Helper
 char GetOppositeBracket(char Bracket);
 
