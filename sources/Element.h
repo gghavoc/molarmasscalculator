@@ -1,8 +1,8 @@
 #pragma once
-#ifndef  _ELEMENT_
+#ifndef _ELEMENT_
 #define _ELEMENT_
 #include <string>
-#include <vector>
+#include <map>
 using uint32_t = unsigned int;
 
 struct Element
@@ -20,15 +20,23 @@ public:
 	);
 
 public:
-	int AtomicNumber;
+    int GetAtomicNumber() const;
+    std::string GetSymbol() const;
+    std::string GetName() const;
+    std::string GetElectronicConfiguration() const;
+    double GetAtomicWeight() const;
+    double GetAtomicWeightConv() const;
+    double GetAtomicWeightStd() const;
+
+private:
+    int AtomicNumber;
     std::string Symbol;
     std::string Name;
     std::string ElectronConfiguration;
     double AtomicWeightConv;
     double AtomicWeightStd;
 
-public:
-    double GetAtomicWeight() const;
+    std::map<std::string, std::string> Attributes;
 
 };
 #endif // ! _ELEMENT_

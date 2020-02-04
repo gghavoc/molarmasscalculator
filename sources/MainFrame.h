@@ -10,7 +10,6 @@
 // Forward Declarations
 class PaintWindow;
 class CompoundTextArea;
-class ElementListBox;
 class wxButton;
 class wxStaticText;
 class wxBoxSizer;

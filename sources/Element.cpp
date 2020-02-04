@@ -19,6 +19,7 @@ Element::Element
     return;
 }
 
+// GETTERS
 double Element::GetAtomicWeight() const
 {
     if (this->AtomicWeightConv == 0)
@@ -26,4 +27,34 @@ double Element::GetAtomicWeight() const
         return this->AtomicWeightStd;
     }
     return this->AtomicWeightConv;
+}
+
+int Element::GetAtomicNumber() const
+{
+    return this->AtomicNumber;
+}
+
+std::string Element::GetSymbol() const
+{
+    return this->Symbol;
+}
+
+std::string Element::GetName() const
+{
+    return this->Name;
+}
+
+std::string Element::GetElectronicConfiguration() const
+{
+    return this->ElectronConfiguration;
+}
+
+double Element::GetAtomicWeightConv() const
+{
+    return this->AtomicWeightConv;
+}
+
+double Element::GetAtomicWeightStd() const
+{
+    return this->AtomicWeightStd;
 }

@@ -34,7 +34,7 @@ ElementResultsListEntry::ElementResultsListEntry
     this->mainHorSizer = new wxBoxSizer(wxHORIZONTAL);
     this->SetSizer(mainHorSizer);
     this->elementBox = new ElementBox(this, element);
-    this->elementNameSText = new wxStaticText(this, wxID_ANY, wxString::Format(wxT("%s : "), element.Name));
+    this->elementNameSText = new wxStaticText(this, wxID_ANY, wxString::Format(wxT("%s : "), element.GetName()));
     this->elementAtomCountSText = new wxStaticText(this, wxID_ANY, wxString::Format(wxT("%i"), elementCount));
     this->elementAtomicWeightSText = new wxStaticText(this, wxID_ANY, wxString::Format(wxT("X %f"), element.GetAtomicWeight()));
     this->totalSText = new wxStaticText(this, wxID_ANY, wxString::Format(wxT("= %f"), element.GetAtomicWeight() * (double) elementCount));
@@ -50,7 +50,7 @@ ElementResultsListEntry::ElementResultsListEntry
 
 void ElementResultsListEntry::SetEntry(const Element &element, const uint32_t count)
 {
-    this->elementNameSText->SetLabel(element.Name);
+    this->elementNameSText->SetLabel(element.GetName());
     this->elementAtomCountSText->SetLabel(wxString::Format(wxT("%i"), count));
     this->elementAtomicWeightSText->SetLabel(wxString::Format(wxT("%f"), element.GetAtomicWeight()));
     this->totalSText->SetLabel(wxString::Format(wxT("%f"), element.GetAtomicWeight() * (double) count));

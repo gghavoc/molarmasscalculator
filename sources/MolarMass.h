@@ -7,15 +7,23 @@
 #include <map>
 #include "Element.h"
 
+extern std::vector<std::pair<std::string, uint32_t>> InvalidElements;
+
 // Parses the string that it takes into a Map that contains parsed elements (as key value)
 // and atom count (as mapped value) from parsed compound
-std::vector<std::pair<std::string, uint32_t>> ParseElementCompoundToVector(std::string& IN_ElementCompound);
+std::vector<std::pair<std::string, uint32_t>> ParseCompoundToVector(std::string& IN_Compound);
+
+std::vector<std::pair<std::string, uint32_t>> GetSimplifiedElementVector(std::vector<std::pair<std::string, uint32_t>> IN_ElementVector);
 
 // Helper, removes characters that aren't alphanumeric
 void RemoveInvalidCharacters(std::string& IN_ElementCompound);
 
 // Helper
-bool HasInvalidElements(const std::vector<std::pair<std::string, uint32_t>>& ElementVector);
+bool HasInvalidElement
+(
+    const std::vector<std::pair<std::string, uint32_t>>& ElementVector,
+    std::vector<std::pair<std::string, uint32_t>>& OUT_InvalidElements = InvalidElements
+);
 
 // Just returns the map with the data 
 std::map<std::string, Element> GetElementMap(); 
@@ -29,11 +37,17 @@ std::string ToTitleCase(std::string TheString);
 // Helper
 bool IsValidElement(const std::string& IN_ElementSymbol);
 
+// Helper
 bool IsValidCharacter(char& ref);
 
+// Helper
 bool IsOpeningBracket(char& ref);
 
+// Helper
 bool IsClosingBracket(char& ref);
+
+// Helper
+bool IsCorrectBracketSyntax(std::string& ref);
 
 // Helper
 char GetOppositeBracket(char Bracket);

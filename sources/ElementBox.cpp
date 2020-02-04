@@ -35,7 +35,7 @@ ElementBox::ElementBox
     this->SetInitialSize(wxSize(50,50));
     this->mainVertSizer = new wxBoxSizer(wxVERTICAL);
     this->SetSizer(mainVertSizer);
-    this->elementSymbol = new wxStaticText(this, wxID_ANY, wxString::Format(wxT("%s"), element.Symbol));
+    this->elementSymbol = new wxStaticText(this, wxID_ANY, wxString::Format(wxT("%s"), element.GetSymbol()));
     this->mainVertSizer->Add(this->elementSymbol, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
     return;
 }

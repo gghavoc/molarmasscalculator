@@ -1,16 +1,20 @@
 #include "MolarMass.h"
 
-// TODO Make a function that takes in the returned value of ParseElementCompoundToVector() and adds all the atom count of the same elements
+// GLOBAL VAR AS DEFAULT ARGUMENT FOR INVALID ELEMENTS
+// GLOBAL VAR AS DEFAULT ARGUMENT FOR INVALID ELEMENTS
+std::vector<std::pair<std::string, uint32_t>> InvalidElements;
 
-std::vector<std::pair<std::string, uint32_t>> ParseElementCompoundToVector(std::string& IN_ElementCompound)
+// TODO Make a function that takes in the returned value of ParseCompoundToVector() and adds all the atom count of the same elements
+
+std::vector<std::pair<std::string, uint32_t>> ParseCompoundToVector(std::string& IN_Compound)
 {
     // TODO Make a function that checks syntax of brackets
     // TODO Improve error-checking
 
-    RemoveInvalidCharacters(IN_ElementCompound);
+    RemoveInvalidCharacters(IN_Compound);
 
     uint32_t ElementsSinceFirstBracket = 0; // keeps track of how many elements were parsed since the encounter of first opening bracket
-    std::string BracketTracker; // Will track the brackets so it can check if the closing bracket is the opposite
+    std::string OpeningBracketTracker; // Will track the brackets so it can check if the closing bracket is the opposite
     std::vector<uint32_t> ElementAmountTracker; // added // will track how many elements were parsed since the last opening bracket
 
     std::vector<std::pair<std::string, uint32_t>> ElementVector; // will store the parsed element and associative atom count
@@ -18,53 +22,50 @@ std::vector<std::pair<std::string, uint32_t>> ParseElementCompoundToVector(std::
     std::string ElementSymbolBuffer; // will store current element
     std::string AtomCountBuffer; // will store count of atoms
 
-    for (uint32_t topIndex = 0; topIndex < IN_ElementCompound.length();)
+    for (uint32_t topIndex = 0; topIndex < IN_Compound.length();)
     {
         std::pair<std::string, uint32_t> CurrentPair;
 
-        while (IsOpeningBracket(IN_ElementCompound[topIndex]))
+        while (IsOpeningBracket(IN_Compound[topIndex]))
         {
-            BracketTracker.push_back(IN_ElementCompound[topIndex]);
-            ElementAmountTracker.push_back(0);
+            OpeningBracketTracker.push_back(IN_Compound[topIndex]);
+            ElementAmountTracker.push_back(0); // add tracker
             ++topIndex;
         }
 
-        while (IsClosingBracket(IN_ElementCompound[topIndex]))
+        while (IsClosingBracket(IN_Compound[topIndex]))
         {
-            if (BracketTracker.back() == GetOppositeBracket(IN_ElementCompound[topIndex]))
+            if (OpeningBracketTracker.back() == GetOppositeBracket(IN_Compound[topIndex])) // if complement closing bracket
             {
-                if (IN_ElementCompound[topIndex] != 0) // check if current character is isn't a null character
+                ++topIndex;
+                std::string StrMultiplier;
+
+                if (isdigit(IN_Compound[topIndex])) // check if the current index is a digit
                 {
-                    ++topIndex;
-                    std::string StrMultiplier;
-
-                    if (isdigit(IN_ElementCompound[topIndex])) // check if the current index is a digit
+                    while (isdigit(IN_Compound[topIndex])) // while it's still a digit
                     {
-                        while (isdigit(IN_ElementCompound[topIndex])) // while it's still a digit
-                        {
-                            StrMultiplier += IN_ElementCompound[topIndex]; // add the current index to the StrMultiplier
+                        StrMultiplier += IN_Compound[topIndex]; // add the current index to the StrMultiplier
 
-                            ++topIndex;
+                        ++topIndex;
 
-                        }
-                    }
-                    else // if the current index isn't a digit, set the StrMultiplier to 1
-                    {
-                        StrMultiplier = "1";
-                    }
-
-                    for
-                    (
-                        uint32_t index = ElementVector.size();
-                        index > ElementAmountTracker.front() -ElementAmountTracker.back() + (ElementsSinceFirstBracket - 1);
-                        --index
-                    )
-                    {
-                        ElementVector[index - 1].second *= std::stoi(StrMultiplier);
                     }
                 }
+                else // if the current index isn't a digit, set the StrMultiplier to 1
+                {
+                    StrMultiplier = "1";
+                }
 
-                BracketTracker.pop_back(); // remove the latest bracket from the vector
+                for
+                (
+                    uint32_t index = ElementVector.size();
+                    index > ElementAmountTracker.front() -ElementAmountTracker.back() + (ElementsSinceFirstBracket - 1);
+                    --index
+                )
+                {
+                    ElementVector[index - 1].second *= std::stoi(StrMultiplier);
+                }
+
+                OpeningBracketTracker.pop_back(); // remove the latest bracket from the vector
 
                 if (ElementAmountTracker.size() > 1) // only pop back if there are two or more inside tracker vector
                 {
@@ -73,31 +74,34 @@ std::vector<std::pair<std::string, uint32_t>> ParseElementCompoundToVector(std::
             }
         }
 
-        // encountering first alphabet that is not uppercase
-        if (isalpha(IN_ElementCompound[topIndex]) && islower(IN_ElementCompound[topIndex]))
-        {
-            IN_ElementCompound[topIndex] = toupper(IN_ElementCompound[topIndex]); // so that the current character will be made upper, prevents crash
-        }
-
         // encountering alphabets
-        if (isupper(IN_ElementCompound[topIndex]))
+        if (isalpha(IN_Compound[topIndex]))
         {
-            ElementSymbolBuffer += IN_ElementCompound[topIndex];
-            ++topIndex;
-
-            while (islower(IN_ElementCompound[topIndex]))
+            // encountering first alphabet that is not uppercase
+            if (islower(IN_Compound[topIndex]))
             {
-                ElementSymbolBuffer += IN_ElementCompound[topIndex];
+                IN_Compound[topIndex] = toupper(IN_Compound[topIndex]); // so that the current character will be made upper, prevents crash
+            }
+
+            if (isupper(IN_Compound[topIndex]))
+            {
+                ElementSymbolBuffer += IN_Compound[topIndex];
+                ++topIndex;
+            }
+
+            while (islower(IN_Compound[topIndex]))
+            {
+                ElementSymbolBuffer += IN_Compound[topIndex];
                 ++topIndex;
             }
         }
 
         // encountering digits
-        if (isdigit(IN_ElementCompound[topIndex]))
+        if (isdigit(IN_Compound[topIndex]))
         {
-            while (isdigit(IN_ElementCompound[topIndex]))
+            while (isdigit(IN_Compound[topIndex]))
             {
-                AtomCountBuffer += IN_ElementCompound[topIndex];
+                AtomCountBuffer += IN_Compound[topIndex];
                 ++topIndex;
             }
         }
@@ -116,7 +120,7 @@ std::vector<std::pair<std::string, uint32_t>> ParseElementCompoundToVector(std::
             ElementVector.insert(ElementVector.end(), CurrentPair);
 
             // TODO Provide a better solution by fixing the parsing mechanism, refactor
-            if (!BracketTracker.empty() && ElementsSinceFirstBracket <= 0)
+            if (!OpeningBracketTracker.empty() && ElementsSinceFirstBracket <= 0)
             {
                 ElementsSinceFirstBracket = ElementVector.size();
             }
@@ -133,6 +137,32 @@ std::vector<std::pair<std::string, uint32_t>> ParseElementCompoundToVector(std::
     }
 
     return ElementVector;
+}
+
+std::vector<std::pair<std::string, uint32_t>> GetSimplifiedElementVector(std::vector<std::pair<std::string, uint32_t>> IN_ElementVector)
+{
+    std::vector<std::pair<std::string, uint32_t>> SimplifiedVector;
+
+    for (std::pair<std::string, uint32_t>& eref : IN_ElementVector)
+    {
+        bool NoMatch = true;
+
+        for (std::pair<std::string, uint32_t>& sref : SimplifiedVector)
+        {
+            if (sref.first == eref.first)
+            {
+                sref.second += eref.second;
+                NoMatch = false;
+            }
+        }
+
+        if (NoMatch)
+        {
+            SimplifiedVector.push_back(eref);
+        }
+    }
+
+    return SimplifiedVector;
 }
 
 Element GetElementDataFromMap(std::string IN_ElementSymbol)
@@ -154,14 +184,8 @@ void RemoveInvalidCharacters(std::string& IN_ElementCompound)
 		if
 		(
             isalnum(IN_ElementCompound[index]) ||
-            IN_ElementCompound[index] == '(' || // added
-            IN_ElementCompound[index] == ')' || // added
-            IN_ElementCompound[index] == '[' || // added
-            IN_ElementCompound[index] == ']' || // added
-            IN_ElementCompound[index] == '{' || // added
-            IN_ElementCompound[index] == '}' || // added
-            IN_ElementCompound[index] == '<' || // added
-            IN_ElementCompound[index] == '>' // added
+            IsOpeningBracket(IN_ElementCompound[index]) ||
+            IsClosingBracket(IN_ElementCompound[index])
         )
 		{
 			FixedString += IN_ElementCompound[index];
@@ -177,14 +201,25 @@ bool IsValidElement(const std::string& IN_ElementSymbol)
     return GetElementMap().count(IN_ElementSymbol) != 0;
 }
 
-bool HasInvalidElements(const std::vector<std::pair<std::string, uint32_t>>& ElementVector)
+bool HasInvalidElement
+(
+    const std::vector<std::pair<std::string, uint32_t>>& ElementVector,
+    std::vector<std::pair<std::string, uint32_t>>& OUT_InvalidElements
+)
 {
+    InvalidElements.clear();
+    bool FoundInvalidElement = false;
+
 	for (const std::pair<std::string,uint32_t>& PairRef : ElementVector)
 	{
-		return !IsValidElement(PairRef.first);
+        if(!IsValidElement(PairRef.first))
+        {
+            FoundInvalidElement = true;
+            OUT_InvalidElements.push_back(PairRef);
+        }
 	}
 
-	return false;
+	return FoundInvalidElement;
 }
 
 void FixElementMapCase(std::map<std::string, Element>& ElementMap)
@@ -194,12 +229,12 @@ void FixElementMapCase(std::map<std::string, Element>& ElementMap)
 	{
 		NewElementMap[ToTitleCase(PairBuffer.first)] =
 		{
-			PairBuffer.second.AtomicNumber,
-			ToTitleCase(PairBuffer.second.Symbol),
-			PairBuffer.second.AtomicWeightConv,
-			PairBuffer.second.AtomicWeightStd,
-			ToTitleCase(PairBuffer.second.Name),
-			PairBuffer.second.ElectronConfiguration
+			PairBuffer.second.GetAtomicNumber(),
+			ToTitleCase(PairBuffer.second.GetSymbol()),
+			PairBuffer.second.GetAtomicWeightConv(),
+			PairBuffer.second.GetAtomicWeightStd(),
+			ToTitleCase(PairBuffer.second.GetName()),
+			PairBuffer.second.GetElectronicConfiguration()
 		};
 	}
 	ElementMap.empty();
@@ -296,6 +331,55 @@ bool IsClosingBracket(char &ref)
            ref == '>';
 }
 
+bool IsCorrectBracketSyntax(std::string &sref)
+{
+    std::string OpeningBracketTracker; // Will track the brackets so it can check if the closing bracket is the opposite
+    std::string ClosingBracketTracker;
+
+    if (IsClosingBracket(sref[0])) // check if the first element in the string is a closing bracket
+    {
+        return false;
+    }
+
+    for (char& ref : sref)
+    {
+        if (IsOpeningBracket(ref))
+        {
+            OpeningBracketTracker.push_back(ref);
+        }
+
+        if (IsClosingBracket(ref))
+        {
+            ClosingBracketTracker.push_back(ref);
+        }
+    }
+
+    if (OpeningBracketTracker.size() != ClosingBracketTracker.size())
+    {
+        return false;
+    }
+    else
+    {
+        for
+        (
+            uint32_t i = OpeningBracketTracker.size(), j = 0;
+            i > 0;
+            --i, ++j
+        )
+        {
+            if
+            (
+                OpeningBracketTracker[i - 1] != GetOppositeBracket(ClosingBracketTracker[j])
+            )
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 std::map<std::string, Element> GetElementMap()
 {
 	std::map<std::string, Element> ElementMap =
@@ -307,7 +391,7 @@ std::map<std::string, Element> GetElementMap()
 		{ "b", { 5, "b", 10.806, 10.821,"boron" } },
 		{ "c", { 6, "c", 12.009, 12.012,"carbon" } },
 		{ "n", { 7, "n", 14.006, 14.008,"nitrogen" } },
-		{ "o", { 8, "b", 10.806, 18.998,"oxygen" } },
+		{ "o", { 8, "o", 10.806, 18.998,"oxygen" } },
 		{ "f", { 9, "f", 0, 18.998,"flourine" } },
 		{ "ne", { 10, "b", 10.806, 20.180,"neon" } },
 		{ "na", { 11, "na", 0, 22.990,"sodium" } },
@@ -423,3 +507,5 @@ std::map<std::string, Element> GetElementMap()
 	FixElementMapCase(ElementMap); // changes the case of the strings inside the map to Title Case
 	return ElementMap;
 }
+
+
