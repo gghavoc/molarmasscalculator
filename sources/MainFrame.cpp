@@ -164,7 +164,12 @@ void MainFrame::OnButtonCalculate(wxCommandEvent &event)
         if (CorrectElements) {
             elementResultsList->ClearResults();
 
+<<<<<<< HEAD
             for (std::pair<std::string, uint32_t> &PairRef : elementVector) {
+=======
+            for (std::pair<std::string, uint32_t> &PairRef : elementVector)
+            {
+>>>>>>> Fixed syntax-check
                 elementResultsList->AddResult(PairRef.first, PairRef.second);
             }
 
