@@ -147,49 +147,45 @@ void MainFrame::OnAbout(wxCommandEvent &event)
     return;
 }
 
-void MainFrame::OnSize(wxSizeEvent &event)
-{
-    wxTopLevelWindowBase::OnSize(event);
-
-    return;
-}
-
 void MainFrame::OnButtonCalculate(wxCommandEvent &event)
 {
     std::string Compound = textArea->GetValue().ToStdString();
 
-    std::vector<std::pair<std::string, uint32_t>> elementVector = GetSimplifiedElementVector(ParseCompoundToVector(Compound));
-
     bool CorrectBrackets = IsCorrectBracketSyntax(Compound);
-    bool CorrectElements = !HasInvalidElement(elementVector);
 
-    if (CorrectBrackets && CorrectElements)
+    if (CorrectBrackets)
     {
-        elementResultsList->ClearResults();
+        // infinite loop prone function
+        std::vector<std::pair<std::string, uint32_t>> elementVector =
+                GetSimplifiedElementVector(ParseCompoundToVector(Compound));
 
-        for (std::pair<std::string, uint32_t >& PairRef : elementVector)
-        {
-            elementResultsList->AddResult(PairRef.first, PairRef.second);
+        bool CorrectElements = !HasInvalidElement(elementVector);
+
+        if (CorrectElements) {
+            elementResultsList->ClearResults();
+
+            for (std::pair<std::string, uint32_t> &PairRef : elementVector) {
+                elementResultsList->AddResult(PairRef.first, PairRef.second);
+            }
+
+            totalTextOutput->SetText(wxString::Format(wxT("Total Mass: %f"), elementResultsList->GetTotalMass()));
         }
-
-        totalTextOutput->SetText(wxString::Format(wxT("Total Mass: %f"), elementResultsList->GetTotalMass()));
-    }
-    else if (!CorrectElements)
-    {
-        wxString IncorrectElements;
-        for (const std::pair<std::string, uint32_t >& ref : InvalidElements)
+        else
         {
-            IncorrectElements += ref.first + '\n';
-        }
+            wxString IncorrectElements;
+            for (const std::pair<std::string, uint32_t> &ref : InvalidElements)
+            {
+                IncorrectElements += ref.first + '\n';
+            }
 
-        wxString err = wxString::Format(wxT("The following elements are invalid:\n %s"), IncorrectElements);
-        wxLogMessage(wxT("Please recheck your entries.\n\n%s"), err);
+            wxString err = wxString::Format(wxT("The following elements are invalid:\n %s"), IncorrectElements);
+            wxLogMessage(wxT("Please recheck your entries.\n\n%s"), err);
+        }
     }
     else
     {
         wxLogMessage(wxT("Please recheck your brackets.\n"));
     }
-
     return;
 }
 

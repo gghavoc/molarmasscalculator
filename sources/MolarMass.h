@@ -13,7 +13,7 @@ extern std::vector<std::pair<std::string, uint32_t>> InvalidElements;
 // and atom count (as mapped value) from parsed compound
 std::vector<std::pair<std::string, uint32_t>> ParseCompoundToVector(std::string& IN_Compound);
 
-std::vector<std::pair<std::string, uint32_t>> GetSimplifiedElementVector(std::vector<std::pair<std::string, uint32_t>> IN_ElementVector);
+std::vector<std::pair<std::string, uint32_t>> GetSimplifiedElementVector(const std::vector<std::pair<std::string, uint32_t>>& IN_ElementVector);
 
 // Helper, removes characters that aren't alphanumeric
 void RemoveInvalidCharacters(std::string& IN_ElementCompound);

@@ -2,12 +2,12 @@
 
 Element::Element
 (
-	int IN_AtomicNumber, 
-	std::string IN_Symbol,
-    double IN_AtomicWeightConv,
-    double IN_AtomicWeightStd,
-	std::string IN_Name,
-	std::string IN_ElectronConfiguration
+        int IN_AtomicNumber,
+        std::string IN_Symbol,
+        double IN_AtomicWeightConv,
+        double IN_AtomicWeightStd,
+        std::string IN_Name,
+        std::string IN_ElectronConfiguration
 ) :
 	AtomicNumber(IN_AtomicNumber),
 	Symbol(IN_Symbol),
@@ -57,4 +57,15 @@ double Element::GetAtomicWeightConv() const
 double Element::GetAtomicWeightStd() const
 {
     return this->AtomicWeightStd;
+}
+
+Element::Element(const Element &element) :
+    AtomicNumber(element.AtomicNumber),
+    Symbol(element.Symbol),
+    Name(element.Name),
+    ElectronConfiguration(element.ElectronConfiguration),
+    AtomicWeightConv(element.AtomicWeightConv),
+    AtomicWeightStd(element.AtomicWeightStd)
+{
+    return;
 }

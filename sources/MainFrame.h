@@ -35,7 +35,6 @@ private:
     // private methods
     void OnExit(wxCommandEvent& event);
     void OnAbout(wxCommandEvent& event);
-    void OnSize(wxSizeEvent& event);
     void OnButtonCalculate(wxCommandEvent& event);
     void OnClick(wxMouseEvent& event);
 
