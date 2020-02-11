@@ -21,7 +21,7 @@ public:
         wxWindowID Id = wxID_ANY,
         const wxPoint& pos = wxDefaultPosition,
         const wxSize& size = wxDefaultSize,
-        long style = wxVSCROLL | wxBORDER_THEME,
+        long style = wxVSCROLL | wxBORDER_SIMPLE,
         const wxString& name = wxPanelNameStr
     );
     ~ElementResultsList();

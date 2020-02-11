@@ -21,7 +21,7 @@ public:
         wxWindowID Id = wxID_ANY,
         const wxPoint& pos = wxDefaultPosition,
         const wxSize& size = wxDefaultSize,
-        long style = wxBORDER_THEME | wxHSCROLL,
+        long style = wxBORDER_SIMPLE | wxHSCROLL,
         const wxString& name = wxPanelNameStr
     );
     ~TotalTextOutput();

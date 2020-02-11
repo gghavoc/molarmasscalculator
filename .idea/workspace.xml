@@ -13,12 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c33d255b-a5d5-4a25-ad3a-288b18daaba6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/Element.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sources/Element.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/Element.h" beforeDir="false" afterPath="$PROJECT_DIR$/sources/Element.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/MainFrame.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sources/MainFrame.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/MainFrame.h" beforeDir="false" afterPath="$PROJECT_DIR$/sources/MainFrame.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/MolarMass.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sources/MolarMass.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/MolarMass.h" beforeDir="false" afterPath="$PROJECT_DIR$/sources/MolarMass.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sources/CompoundTextArea.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sources/CompoundTextArea.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sources/ElementResultsList.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/sources/ElementResultsList.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sources/ElementResultsList.h" beforeDir="false" afterPath="$PROJECT_DIR$/sources/ElementResultsList.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sources/TotalTextOutput.h" beforeDir="false" afterPath="$PROJECT_DIR$/sources/TotalTextOutput.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,6 +141,7 @@
       <workItem from="1580772609499" duration="12618000" />
       <workItem from="1581128206650" duration="3983000" />
       <workItem from="1581298718920" duration="3834000" />
+      <workItem from="1581383759538" duration="1504000" />
     </task>
     <servers />
   </component>
@@ -167,26 +166,26 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="124" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1580012395211" />
-    <state width="1324" height="216" key="GridCell.Tab.0.bottom" timestamp="1581302556045">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1581385282789">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1324" height="216" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1581302556045" />
-    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1580035588685" />
-    <state width="1324" height="216" key="GridCell.Tab.0.center" timestamp="1581302556044">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="182" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1581385282789" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center" timestamp="1581385282789">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1324" height="216" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1581302556044" />
-    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1580035588684" />
-    <state width="1324" height="216" key="GridCell.Tab.0.left" timestamp="1581302556044">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="182" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1581385282789" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left" timestamp="1581385282789">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1324" height="216" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1581302556044" />
-    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1580035588684" />
-    <state width="1324" height="216" key="GridCell.Tab.0.right" timestamp="1581302556044">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="1323" height="182" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1581385282789" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right" timestamp="1581385282789">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1324" height="216" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1581302556044" />
-    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1580035588684" />
+    <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1581385282789" />
     <state width="1324" height="216" key="GridCell.Tab.1.bottom" timestamp="1581302556046">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -216,11 +215,11 @@
     </state>
     <state width="498" height="440" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1580637397341" />
     <state width="498" height="446" key="SwitcherDM/0.0.1366.738@0.0.1366.738" timestamp="1580027197869" />
-    <state x="366" y="190" key="com.intellij.ide.util.TipDialog" timestamp="1581298734100">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="366" y="193" key="com.intellij.ide.util.TipDialog" timestamp="1581383758788">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="366" y="190" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1581298734100" />
-    <state x="366" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1580025361344" />
+    <state x="366" y="193" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1581383758788" />
     <state x="235" y="102" width="886" height="517" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1580770765423">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

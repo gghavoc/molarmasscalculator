@@ -43,9 +43,11 @@ void ElementResultsList::AddResult(const wxString& Symbol, uint32_t AtomCount)
     // adds to the sizer
     this->mainSizer->Add(entryArr[this->entryArr.size()-1], 0, wxEXPAND | wxRIGHT | wxTOP | wxRIGHT | wxLEFT, 5);
 
-    // to refresh layout
+    // to refresh layout without needing to resize the app
     this->Layout();
 
+    // to recalculate the "virtual size" so you can scroll
+    //
     this->FitInside();
 
     // adds to the total mass
